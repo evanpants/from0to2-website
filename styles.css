@@ -70,8 +70,17 @@ body {
     color: var(--primary-color);
 }
 
+.logo-image {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
 .logo-text {
     display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
 }
 
 /* Buttons */
@@ -233,6 +242,73 @@ body {
     background: var(--bg-light);
 }
 
+/* Lifestyle Section */
+.lifestyle {
+    padding: 80px 20px;
+    background: var(--bg-color);
+}
+
+.lifestyle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.lifestyle-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.lifestyle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.lifestyle-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.lifestyle-placeholder {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--secondary-color) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.125rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.lifestyle-placeholder small {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+
+.lifestyle-card h3 {
+    padding: 1.5rem 1.5rem 0.5rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.lifestyle-card p {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--text-light);
+}
+
 .bike-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -253,6 +329,13 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
+.bike-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
 .bike-image-placeholder {
     width: 100%;
     height: 250px;
@@ -264,6 +347,16 @@ body {
     font-weight: 600;
     font-size: 1.125rem;
     position: relative;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.bike-image-placeholder small {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-top: 0.5rem;
 }
 
 .bike-image-placeholder::before {
@@ -281,6 +374,14 @@ body {
         rgba(255, 255, 255, 0.1) 20px
     );
     opacity: 0.3;
+}
+
+.hero-bike-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
 }
 
 .bike-card h3 {
@@ -566,6 +667,10 @@ body {
     }
     
     .bike-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .lifestyle-grid {
         grid-template-columns: 1fr;
     }
 }
