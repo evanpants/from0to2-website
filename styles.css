@@ -7,16 +7,23 @@
 }
 
 :root {
-    --primary-color: #2d5016;
-    --primary-light: #4a7c2a;
-    --secondary-color: #f59e0b;
-    --accent-color: #10b981;
+    /* Brooklyn Roasting Company inspired palette */
+    --primary-color: #d97706; /* Red-orange (N) */
+    --primary-dark: #b45309;
+    --primary-light: #f59e0b;
+    --secondary-color: #84cc16; /* Olive green (K) */
+    --secondary-dark: #65a30d;
+    --accent-yellow: #fbbf24; /* Bright yellow/gold (L) */
+    --accent-light-yellow: #fef3c7; /* Light yellow (O) */
+    --accent-periwinkle: #a78bfa; /* Periwinkle/purple (R) */
+    --accent-blue-grey: #94a3b8; /* Light blue-grey (B) */
+    --accent-sage: #86efac; /* Sage green (Y) */
     --text-color: #1f2937;
     --text-light: #6b7280;
     --text-lighter: #9ca3af;
     --bg-color: #ffffff;
     --bg-light: #f9fafb;
-    --bg-dark: #111827;
+    --bg-dark: #000000; /* Black background like logo */
     --border-color: #e5e7eb;
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -113,7 +120,7 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    background: linear-gradient(135deg, var(--accent-light-yellow) 0%, var(--accent-sage) 100%);
     padding: 80px 20px;
     min-height: 600px;
     display: flex;
@@ -150,12 +157,12 @@ body {
 
 .pricing-badge {
     background: white;
-    border: 2px solid var(--accent-color);
+    border: 3px solid var(--primary-color);
     border-radius: 12px;
     padding: 1.5rem 2rem;
     margin-bottom: 2rem;
     display: inline-block;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-lg);
 }
 
 .price {
@@ -185,7 +192,7 @@ body {
 .image-placeholder {
     width: 100%;
     height: 400px;
-    background: var(--bg-light);
+    background: linear-gradient(135deg, var(--bg-light) 0%, #f3f4f6 100%);
     border: 2px dashed var(--border-color);
     border-radius: 12px;
     display: flex;
@@ -193,6 +200,99 @@ body {
     justify-content: center;
     color: var(--text-lighter);
     font-size: 1.125rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.bike-hero {
+    background: linear-gradient(135deg, var(--accent-light-yellow) 0%, var(--accent-sage) 100%);
+    border: none;
+    box-shadow: var(--shadow-lg);
+}
+
+.placeholder-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.placeholder-content svg {
+    opacity: 0.3;
+    color: var(--primary-color);
+}
+
+.placeholder-content p {
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Bike Showcase Section */
+.bike-showcase {
+    padding: 80px 20px;
+    background: var(--bg-light);
+}
+
+.bike-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.bike-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.bike-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.bike-image-placeholder {
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(135deg, var(--accent-periwinkle) 0%, var(--accent-blue-grey) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.125rem;
+    position: relative;
+}
+
+.bike-image-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.1) 10px,
+        rgba(255, 255, 255, 0.1) 20px
+    );
+    opacity: 0.3;
+}
+
+.bike-card h3 {
+    padding: 1.5rem 1.5rem 0.5rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.bike-card p {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--text-light);
 }
 
 /* Benefits Section */
@@ -228,6 +328,7 @@ body {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
     border-color: var(--primary-color);
+    background: white;
 }
 
 .benefit-icon {
@@ -363,7 +464,7 @@ body {
 /* CTA Section */
 .cta-section {
     padding: 80px 20px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
     text-align: center;
 }
@@ -462,6 +563,10 @@ body {
     
     .image-placeholder {
         height: 300px;
+    }
+    
+    .bike-grid {
+        grid-template-columns: 1fr;
     }
 }
 
