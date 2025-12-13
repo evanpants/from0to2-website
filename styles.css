@@ -64,7 +64,7 @@ body {
 }
 
 .logo-text {
-    /* Placeholder for logo - you'll replace this with your logo image */
+    display: inline-block;
 }
 
 /* Buttons */
