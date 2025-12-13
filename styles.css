@@ -7,26 +7,39 @@
 }
 
 :root {
-    /* Color palette inspired by family cargo bike image */
-    /* Natural, earthy tones from the image: beige bike, green grass, blue jeans, cream sweater */
-    --primary-color: #4a7c59; /* Forest green - from grass and nature */
-    --primary-dark: #2d4a3a;
-    --primary-light: #6b9d7a;
-    --secondary-color: #d4a574; /* Warm beige/tan - from cargo bike */
-    --secondary-dark: #b8935f;
-    --secondary-light: #e8c9a0;
-    --accent-blue: #5b8fa8; /* Soft blue - from jeans */
-    --accent-cream: #f5f0e8; /* Cream - from sweater */
-    --accent-sage: #9fb8a8; /* Sage green - natural accent */
-    --accent-warm: #e8d5c4; /* Warm beige - bike color */
-    --text-color: #2c3e2d; /* Dark green-grey */
-    --text-light: #5a6b5c;
-    --text-lighter: #8a9a8b;
+    /* Exact color palette - no gradients */
+    --light-blue-grey: #9FAFC6;
+    --medium-purple-blue: #5F67A5;
+    --pale-yellow: #F7ED9F;
+    --gold: #E8BC34;
+    --olive-green: #647539;
+    --yellow: #F3C12F;
+    --light-sage-green: #A4B29C;
+    --sage-green: #A4B29C;
+    --red-orange: #E63C25;
+    
+    /* Primary colors for UI */
+    --primary-color: #5F67A5; /* Medium purple-blue */
+    --primary-dark: #4a5080;
+    --primary-light: #7a82b8;
+    --secondary-color: #647539; /* Olive green */
+    --secondary-dark: #4d5a2b;
+    --secondary-light: #7a8a4a;
+    --accent-gold: #E8BC34;
+    --accent-yellow: #F3C12F;
+    --accent-pale-yellow: #F7ED9F;
+    --accent-red-orange: #E63C25;
+    --accent-sage: #A4B29C;
+    --accent-blue-grey: #9FAFC6;
+    
+    --text-color: #1f2937;
+    --text-light: #6b7280;
+    --text-lighter: #9ca3af;
     --bg-color: #ffffff;
-    --bg-light: #faf9f7; /* Warm off-white */
-    --bg-warm: #f8f6f2; /* Very light warm beige */
-    --bg-dark: #1a2a1f; /* Dark forest green */
-    --border-color: #e0ddd6; /* Warm grey */
+    --bg-light: #f9fafb;
+    --bg-pale-yellow: #F7ED9F;
+    --bg-dark: #2c3e2d;
+    --border-color: #e5e7eb;
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -131,7 +144,7 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--accent-cream) 0%, var(--bg-warm) 100%);
+    background: var(--bg-pale-yellow);
     padding: 80px 20px;
     min-height: 600px;
     display: flex;
@@ -203,7 +216,7 @@ body {
 .image-placeholder {
     width: 100%;
     height: 400px;
-    background: linear-gradient(135deg, var(--bg-light) 0%, #f3f4f6 100%);
+    background: var(--bg-light);
     border: 2px dashed var(--border-color);
     border-radius: 12px;
     display: flex;
@@ -216,7 +229,7 @@ body {
 }
 
 .bike-hero {
-    background: linear-gradient(135deg, var(--accent-cream) 0%, var(--secondary-light) 100%);
+    background: var(--accent-pale-yellow);
     border: none;
     box-shadow: var(--shadow-lg);
 }
@@ -280,7 +293,7 @@ body {
 .lifestyle-placeholder {
     width: 100%;
     height: 200px;
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-sage) 100%);
+    background: var(--accent-sage);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -341,7 +354,7 @@ body {
 .bike-image-placeholder {
     width: 100%;
     height: 250px;
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-sage) 100%);
+    background: var(--accent-blue-grey);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -368,13 +381,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 10px,
-        rgba(255, 255, 255, 0.1) 10px,
-        rgba(255, 255, 255, 0.1) 20px
-    );
+    background: rgba(255, 255, 255, 0.1);
     opacity: 0.3;
 }
 
@@ -567,7 +574,7 @@ body {
 /* CTA Section */
 .cta-section {
     padding: 80px 20px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    background: var(--primary-color);
     color: white;
     text-align: center;
 }
