@@ -190,6 +190,28 @@ a.cta-button {
     line-height: 1.6;
 }
 
+/* Compact Hero for Get Started Page */
+.hero-compact {
+    padding: 2rem 20px;
+    min-height: auto;
+}
+
+.hero-container-compact {
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+.hero-title-compact {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    text-transform: none;
+}
+
+.hero-subtitle-compact {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
 .pricing-badge {
     background: white;
     border: 3px solid var(--primary-color);
