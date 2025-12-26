@@ -209,6 +209,7 @@ a.cta-button {
     font-weight: 900;
     white-space: nowrap;
     pointer-events: none;
+    transform: none;
 }
 
 .rotating-word.active {
@@ -218,6 +219,7 @@ a.cta-button {
     font-weight: 900;
     pointer-events: auto;
     transition: opacity 0.2s ease-in;
+    transform: none;
 }
 
 .hero-subtitle {
