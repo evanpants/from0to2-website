@@ -204,8 +204,8 @@ a.cta-button {
     left: 0;
     top: 0;
     opacity: 0;
-    transform: translateX(100px);
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(80px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
     color: #e2452f;
     font-weight: 900;
     white-space: nowrap;
@@ -219,6 +219,7 @@ a.cta-button {
     color: #e2452f;
     font-weight: 900;
     pointer-events: auto;
+    transition: opacity 0.7s ease-in, transform 0.7s ease-in;
 }
 
 .hero-subtitle {
