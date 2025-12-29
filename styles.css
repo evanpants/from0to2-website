@@ -157,6 +157,17 @@ a.cta-button {
     display: inline-block;
 }
 
+.cta-button.nav-cta {
+    background: #687232;
+    color: white;
+}
+
+.cta-button.nav-cta:hover {
+    background: #556028;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
 /* Hero Section */
 .hero {
     background: var(--bg-pale-yellow);
