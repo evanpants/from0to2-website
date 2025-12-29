@@ -205,7 +205,7 @@ a.cta-button.nav-cta:focus,
     background-color: #5F67A5 !important;
     background: #5F67A5 !important;
     color: #ffffff !important;
-    outline: 2px solid #5F67A5;
+    outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
 
