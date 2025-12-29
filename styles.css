@@ -1582,3 +1582,26 @@ a.cta-button.nav-cta:visited,
         padding: 10px;
     }
 }
+
+/* Final override for navigation Get Started button - placed at end to ensure highest priority */
+body .navbar .nav-container .nav-right a.cta-button.nav-cta {
+    background-color: #5F67A5 !important;
+    background: #5F67A5 !important;
+    color: #ffffff !important;
+}
+
+body .navbar .nav-container .nav-right a.cta-button.nav-cta:hover {
+    background-color: #7a82b8 !important;
+    background: #7a82b8 !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+body .navbar .nav-container .nav-right a.cta-button.nav-cta:active,
+body .navbar .nav-container .nav-right a.cta-button.nav-cta:focus,
+body .navbar .nav-container .nav-right a.cta-button.nav-cta:visited {
+    background-color: #5F67A5 !important;
+    background: #5F67A5 !important;
+    color: #ffffff !important;
+}
