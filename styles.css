@@ -158,12 +158,13 @@ a.cta-button {
 }
 
 .cta-button.nav-cta {
-    background: #687232;
-    color: white;
+    background: #687232 !important;
+    color: white !important;
 }
 
 .cta-button.nav-cta:hover {
-    background: #556028;
+    background: #556028 !important;
+    color: white !important;
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
