@@ -157,30 +157,67 @@ a.cta-button {
     display: inline-block;
 }
 
+/* Navigation Get Started Button - Must be after all other button styles */
+.navbar .nav-right a.cta-button.nav-cta,
+.navbar .nav-right .cta-button.nav-cta,
+.nav-right a.cta-button.nav-cta,
+.nav-right .cta-button.nav-cta,
 a.cta-button.nav-cta,
 .cta-button.nav-cta {
+    background-color: #687232 !important;
     background: #687232 !important;
-    color: white !important;
+    color: #ffffff !important;
     border: none !important;
+    border-color: transparent !important;
 }
 
+.navbar .nav-right a.cta-button.nav-cta:hover,
+.navbar .nav-right .cta-button.nav-cta:hover,
+.nav-right a.cta-button.nav-cta:hover,
+.nav-right .cta-button.nav-cta:hover,
 a.cta-button.nav-cta:hover,
 .cta-button.nav-cta:hover {
+    background-color: #556028 !important;
     background: #556028 !important;
-    color: white !important;
+    color: #ffffff !important;
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
-.nav-right .cta-button.nav-cta {
+.navbar .nav-right a.cta-button.nav-cta:active,
+.navbar .nav-right .cta-button.nav-cta:active,
+.nav-right a.cta-button.nav-cta:active,
+.nav-right .cta-button.nav-cta:active,
+a.cta-button.nav-cta:active,
+.cta-button.nav-cta:active {
+    background-color: #687232 !important;
     background: #687232 !important;
-    color: white !important;
-    border: none !important;
+    color: #ffffff !important;
+    transform: translateY(0);
 }
 
-.nav-right .cta-button.nav-cta:hover {
-    background: #556028 !important;
-    color: white !important;
+.navbar .nav-right a.cta-button.nav-cta:focus,
+.navbar .nav-right .cta-button.nav-cta:focus,
+.nav-right a.cta-button.nav-cta:focus,
+.nav-right .cta-button.nav-cta:focus,
+a.cta-button.nav-cta:focus,
+.cta-button.nav-cta:focus {
+    background-color: #687232 !important;
+    background: #687232 !important;
+    color: #ffffff !important;
+    outline: 2px solid #687232;
+    outline-offset: 2px;
+}
+
+.navbar .nav-right a.cta-button.nav-cta:visited,
+.navbar .nav-right .cta-button.nav-cta:visited,
+.nav-right a.cta-button.nav-cta:visited,
+.nav-right .cta-button.nav-cta:visited,
+a.cta-button.nav-cta:visited,
+.cta-button.nav-cta:visited {
+    background-color: #687232 !important;
+    background: #687232 !important;
+    color: #ffffff !important;
 }
 
 /* Hero Section */
