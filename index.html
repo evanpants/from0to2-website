@@ -58,10 +58,34 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="images/hero-bike.jpg?v=2" alt="Family riding family cargo bike in NYC" class="hero-bike-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="image-placeholder bike-hero" style="display: none;">
-                    <div class="placeholder-content">
-                        <p>Hero Image</p>
+                <div class="hero-carousel" id="hero-carousel">
+                    <div class="hero-carousel-container">
+                        <div class="hero-carousel-track" id="hero-carousel-track">
+                            <div class="hero-carousel-slide active">
+                                <img src="images/hero-bike1.jpg" alt="Family riding family cargo bike in NYC" class="hero-carousel-image">
+                            </div>
+                            <div class="hero-carousel-slide">
+                                <img src="images/hero-bike2.jpg" alt="Family riding family cargo bike in NYC" class="hero-carousel-image">
+                            </div>
+                            <div class="hero-carousel-slide">
+                                <img src="images/hero-bike3.jpg" alt="Family riding family cargo bike in NYC" class="hero-carousel-image">
+                            </div>
+                        </div>
+                        <button class="hero-carousel-arrow hero-carousel-prev" id="hero-carousel-prev" aria-label="Previous image">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 18l-6-6 6-6"/>
+                            </svg>
+                        </button>
+                        <button class="hero-carousel-arrow hero-carousel-next" id="hero-carousel-next" aria-label="Next image">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </button>
+                        <div class="hero-carousel-indicators" id="hero-carousel-indicators">
+                            <button class="hero-carousel-indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+                            <button class="hero-carousel-indicator" data-slide="1" aria-label="Go to slide 2"></button>
+                            <button class="hero-carousel-indicator" data-slide="2" aria-label="Go to slide 3"></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -241,6 +265,114 @@
     </footer>
 
     <script>
+        // Hero Image Carousel
+        (function() {
+            const carousel = document.getElementById('hero-carousel');
+            const track = document.getElementById('hero-carousel-track');
+            const slides = track.querySelectorAll('.hero-carousel-slide');
+            const prevBtn = document.getElementById('hero-carousel-prev');
+            const nextBtn = document.getElementById('hero-carousel-next');
+            const indicators = document.querySelectorAll('.hero-carousel-indicator');
+            
+            let currentSlide = 0;
+            let autoScrollTimeout;
+            const autoScrollDelay = 5000; // 5 seconds
+            
+            function updateCarousel() {
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('active');
+                    if (index === currentSlide) {
+                        slide.classList.add('active');
+                    }
+                });
+                
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.remove('active');
+                    if (index === currentSlide) {
+                        indicator.classList.add('active');
+                    }
+                });
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateCarousel();
+                scheduleNextSlide();
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                updateCarousel();
+                scheduleNextSlide();
+            }
+            
+            function scheduleNextSlide() {
+                clearTimeout(autoScrollTimeout);
+                autoScrollTimeout = setTimeout(() => {
+                    nextSlide();
+                }, autoScrollDelay);
+            }
+            
+            function pauseAutoScroll() {
+                clearTimeout(autoScrollTimeout);
+            }
+            
+            function resumeAutoScroll() {
+                scheduleNextSlide();
+            }
+            
+            // Initialize
+            updateCarousel();
+            scheduleNextSlide();
+            
+            // Pause on hover
+            carousel.addEventListener('mouseenter', pauseAutoScroll);
+            carousel.addEventListener('mouseleave', resumeAutoScroll);
+            
+            // Arrow buttons
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+            });
+            
+            // Indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                    scheduleNextSlide();
+                });
+            });
+            
+            // Swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                pauseAutoScroll();
+            }, { passive: true });
+            
+            track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const swipeDistance = touchStartX - touchEndX;
+                const minSwipeDistance = 50;
+                
+                if (Math.abs(swipeDistance) > minSwipeDistance) {
+                    if (swipeDistance > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                } else {
+                    resumeAutoScroll();
+                }
+            }, { passive: true });
+        })();
+
         // Rotating words carousel
         (function() {
             const rotatingWords = document.querySelectorAll('.rotating-word');
