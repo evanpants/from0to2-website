@@ -157,16 +157,30 @@ a.cta-button {
     display: inline-block;
 }
 
+a.cta-button.nav-cta,
 .cta-button.nav-cta {
     background: #687232 !important;
     color: white !important;
+    border: none !important;
 }
 
+a.cta-button.nav-cta:hover,
 .cta-button.nav-cta:hover {
     background: #556028 !important;
     color: white !important;
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
+}
+
+.nav-right .cta-button.nav-cta {
+    background: #687232 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.nav-right .cta-button.nav-cta:hover {
+    background: #556028 !important;
+    color: white !important;
 }
 
 /* Hero Section */
