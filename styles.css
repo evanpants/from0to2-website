@@ -321,6 +321,7 @@ a.cta-button.nav-cta:visited,
     display: inline-block;
     vertical-align: baseline;
     max-width: 100%;
+    min-height: 1.2em; /* Ensure minimum height to prevent collapse */
 }
 
 .rotating-word-measure {
@@ -338,6 +339,8 @@ a.cta-button.nav-cta:visited,
     pointer-events: none;
     max-width: 100%;
     line-height: inherit;
+    position: relative;
+    z-index: 0;
 }
 
 .rotating-word {
@@ -357,6 +360,7 @@ a.cta-button.nav-cta:visited,
     z-index: 1;
     max-width: 100%;
     line-height: inherit;
+    height: auto;
 }
 
 .rotating-word.active {

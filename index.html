@@ -354,14 +354,21 @@
             
             // Update measure element to maintain layout space
             function updateMeasureElement(wordElement) {
-                if (!wordElement || !measureElement) return;
+                if (!wordElement || !measureElement || !rotatingWordsContainer) return;
                 measureElement.textContent = wordElement.textContent;
                 
                 // Sync the word element's width to match measurement element
                 // This ensures proper line breaks match
                 const measureWidth = measureElement.offsetWidth;
+                const measureHeight = measureElement.offsetHeight;
+                
                 if (measureWidth > 0) {
                     wordElement.style.width = measureWidth + 'px';
+                }
+                
+                // Update container height to prevent overlap with button
+                if (measureHeight > 0) {
+                    rotatingWordsContainer.style.minHeight = measureHeight + 'px';
                 }
             }
             
