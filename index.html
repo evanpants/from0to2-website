@@ -365,6 +365,26 @@
                 }
             }
             
+            // Calculate fixed height for 3 lines
+            function calculateThreeLineHeight() {
+                if (!measureElement) return null;
+                // Create a test element with 3 lines of text
+                const testText = 'THE CHILDREN\'S MUSEUM'; // Longest likely text
+                measureElement.textContent = testText + ' ' + testText + ' ' + testText; // Force 3 lines
+                void measureElement.offsetHeight;
+                const height = measureElement.offsetHeight;
+                return height;
+            }
+            
+            // Set fixed container height for 3 lines
+            function setFixedContainerHeight() {
+                if (!rotatingWordsContainer) return;
+                const threeLineHeight = calculateThreeLineHeight();
+                if (threeLineHeight && threeLineHeight > 0) {
+                    rotatingWordsContainer.style.minHeight = threeLineHeight + 'px';
+                }
+            }
+            
             // Update measure element and container dimensions
             function updateMeasureElement(wordElement) {
                 if (!wordElement || !measureElement || !rotatingWordsContainer) return;
@@ -374,14 +394,6 @@
                 
                 // Force reflow
                 void measureElement.offsetHeight;
-                
-                // Get dimensions
-                const measureHeight = measureElement.offsetHeight;
-                
-                // Update container height
-                if (measureHeight > 0) {
-                    rotatingWordsContainer.style.minHeight = measureHeight + 'px';
-                }
                 
                 // Sync word element width
                 const containerWidth = rotatingWordsContainer.offsetWidth;
@@ -418,6 +430,7 @@
             // Initialize
             function initialize() {
                 setContainerWidth();
+                setFixedContainerHeight();
                 
                 const initialWord = rotatingWords[currentIndex];
                 if (initialWord) {
@@ -437,6 +450,7 @@
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(function() {
                     setContainerWidth();
+                    setFixedContainerHeight();
                     const activeWord = rotatingWordsContainer.querySelector('.rotating-word.active');
                     if (activeWord) {
                         updateMeasureElement(activeWord);

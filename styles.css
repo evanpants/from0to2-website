@@ -315,6 +315,7 @@ a.cta-button.nav-cta:visited,
     word-wrap: break-word;
     overflow-wrap: break-word;
     display: block;
+    min-height: 3.3em; /* Ensure title container maintains height for 3-line rotating text */
 }
 
 .hero-title-static {
@@ -327,8 +328,8 @@ a.cta-button.nav-cta:visited,
     display: inline-block;
     vertical-align: baseline;
     margin-left: 0.3em;
-    min-height: 1.2em;
     margin-bottom: 0.2em;
+    /* Height will be set dynamically by JavaScript to accommodate 3 lines */
 }
 
 .rotating-word-measure {
