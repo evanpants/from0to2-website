@@ -319,12 +319,20 @@ a.cta-button.nav-cta:visited,
 .rotating-words {
     position: relative;
     display: inline-block;
-    text-align: left;
     vertical-align: baseline;
-    overflow: visible;
-    min-width: 0;
-    max-width: 100%;
-    transition: width 0.4s ease, min-height 0.4s ease;
+}
+
+.rotating-word-measure {
+    visibility: hidden;
+    display: inline-block;
+    color: #e2452f;
+    font-weight: 900;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
 }
 
 .rotating-word {
@@ -340,26 +348,15 @@ a.cta-button.nav-cta:visited,
     word-wrap: break-word;
     overflow-wrap: break-word;
     pointer-events: none;
-    transform: none;
     z-index: 1;
+    max-width: 100%;
 }
 
 .rotating-word.active {
-    position: relative;
     opacity: 1;
     visibility: visible;
-    color: #e2452f;
-    font-weight: 900;
-    pointer-events: auto;
     transition: opacity 0.4s ease-in-out, visibility 0s linear 0s;
-    transform: none;
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
     z-index: 2;
-    display: inline;
-    width: auto;
-    max-width: 100%;
 }
 
 .hero-subtitle {

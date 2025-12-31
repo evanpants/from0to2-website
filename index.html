@@ -45,6 +45,7 @@
                 <h1 class="hero-title">
                     THE FASTEST WAY TO 
                     <span class="rotating-words">
+                        <span class="rotating-word-measure" aria-hidden="true"></span>
                         <span class="rotating-word active">Your happy place</span>
                         <span class="rotating-word">school</span>
                         <span class="rotating-word">the supermarket</span>
@@ -337,74 +338,69 @@
             }, { passive: true });
         })();
 
-        // Rotating words carousel
+        // Rotating words carousel - rebuilt for stability
         (function() {
             const rotatingWords = document.querySelectorAll('.rotating-word');
             const rotatingWordsContainer = document.querySelector('.rotating-words');
+            const measureElement = document.querySelector('.rotating-word-measure');
             let currentIndex = 0;
             const rotateDelay = 3000; // 3 seconds per word
             const fadeOutDuration = 400; // Match CSS transition duration
             const gapDuration = 300; // 0.3s gap between fade out and fade in
             
-            // Update container dimensions to prevent layout shift
-            function updateContainerDimensions() {
-                if (!rotatingWordsContainer) return;
-                
-                const activeWord = rotatingWordsContainer.querySelector('.rotating-word.active');
-                if (activeWord) {
-                    // Measure the active word's natural dimensions
-                    const height = activeWord.offsetHeight;
-                    const width = activeWord.offsetWidth;
-                    
-                    if (height > 0) {
-                        rotatingWordsContainer.style.minHeight = height + 'px';
-                    }
-                    if (width > 0) {
-                        rotatingWordsContainer.style.width = width + 'px';
-                    }
-                }
+            if (!rotatingWordsContainer || !measureElement || rotatingWords.length === 0) {
+                return;
+            }
+            
+            // Update measure element to maintain layout space
+            function updateMeasureElement(wordElement) {
+                if (!wordElement || !measureElement) return;
+                measureElement.textContent = wordElement.textContent;
             }
             
             function rotateWords() {
-                // Measure and lock current width before transition
-                const currentActiveWord = rotatingWords[currentIndex];
-                if (currentActiveWord && rotatingWordsContainer) {
-                    const currentWidth = currentActiveWord.offsetWidth;
-                    const currentHeight = currentActiveWord.offsetHeight;
-                    if (currentWidth > 0) {
-                        rotatingWordsContainer.style.width = currentWidth + 'px';
-                    }
-                    if (currentHeight > 0) {
-                        rotatingWordsContainer.style.minHeight = currentHeight + 'px';
-                    }
-                }
+                const currentWord = rotatingWords[currentIndex];
                 
-                // Remove active class from current word to start fade out
-                rotatingWords[currentIndex].classList.remove('active');
+                // Update measure element before transition to lock layout
+                updateMeasureElement(currentWord);
+                
+                // Remove active class to start fade out
+                currentWord.classList.remove('active');
                 
                 // Move to next word
                 currentIndex = (currentIndex + 1) % rotatingWords.length;
+                const nextWord = rotatingWords[currentIndex];
                 
-                // Add active class to new word after fade out completes + gap
+                // Update measure element with next word content
+                updateMeasureElement(nextWord);
+                
+                // Add active class after fade out + gap
                 setTimeout(function() {
-                    rotatingWords[currentIndex].classList.add('active');
-                    // Update container dimensions after new word becomes active
-                    setTimeout(updateContainerDimensions, 50);
+                    nextWord.classList.add('active');
                 }, fadeOutDuration + gapDuration);
             }
             
-            // Initialize and start rotation
-            if (rotatingWords.length > 0) {
-                // Initial dimension update after page load
-                setTimeout(updateContainerDimensions, 100);
-                // Update on window resize
-                let resizeTimeout;
-                window.addEventListener('resize', function() {
-                    clearTimeout(resizeTimeout);
-                    resizeTimeout = setTimeout(updateContainerDimensions, 100);
-                });
-                setInterval(rotateWords, rotateDelay);
+            // Initialize
+            const initialWord = rotatingWords[currentIndex];
+            if (initialWord) {
+                updateMeasureElement(initialWord);
+                initialWord.classList.add('active');
             }
+            
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    const activeWord = rotatingWordsContainer.querySelector('.rotating-word.active');
+                    if (activeWord) {
+                        updateMeasureElement(activeWord);
+                    }
+                }, 100);
+            });
+            
+            // Start rotation
+            setInterval(rotateWords, rotateDelay);
         })();
 
         // Hamburger menu functionality
