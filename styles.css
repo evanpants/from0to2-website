@@ -60,7 +60,10 @@ body {
     padding: 0 20px;
 }
 
-/* Navigation */
+/* ============================================
+   NAVIGATION BAR
+   ============================================ */
+
 .navbar {
     background: var(--bg-color);
     border-bottom: 1px solid var(--border-color);
@@ -77,11 +80,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
+/* Left side of navigation */
 .nav-left {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .nav-home-link {
@@ -91,6 +97,7 @@ body {
     padding: 0.5rem 1rem;
     border-radius: 6px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .nav-home-link:hover {
@@ -98,12 +105,39 @@ body {
     background-color: var(--bg-pale-yellow);
 }
 
+/* Right side of navigation */
 .nav-right {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    flex-shrink: 0;
 }
 
+/* Logo Styles - TO CHANGE LOGO: Update src path in HTML files */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 0; /* Remove extra space below image */
+    transition: opacity 0.3s ease;
+    flex-shrink: 0;
+}
+
+.navbar-logo:hover {
+    opacity: 0.85;
+}
+
+.navbar-logo img {
+    height: 45px;
+    width: auto;
+    max-width: 200px;
+    display: block;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Legacy logo classes (for backwards compatibility) */
 .logo-link {
     display: flex;
     align-items: center;
@@ -115,24 +149,11 @@ body {
     opacity: 0.8;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
 .logo-image {
     height: 45px;
     width: auto;
     display: block;
     object-fit: contain;
-}
-
-.logo-text {
-    display: inline-block;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
 }
 
 /* Buttons */
@@ -1164,6 +1185,7 @@ a.cta-button.nav-cta:visited,
         gap: 1rem;
     }
     
+    .navbar-logo img,
     .logo-image {
         height: 35px;
     }
@@ -1262,6 +1284,7 @@ a.cta-button.nav-cta:visited,
         gap: 0.75rem;
     }
     
+    .navbar-logo img,
     .logo-image {
         height: 30px;
     }
