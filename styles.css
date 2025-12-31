@@ -322,6 +322,7 @@ a.cta-button.nav-cta:visited,
     vertical-align: baseline;
     max-width: 100%;
     min-height: 1.2em; /* Ensure minimum height to prevent collapse */
+    margin-bottom: 0.2em; /* Add small margin to prevent overlap with button */
 }
 
 .rotating-word-measure {

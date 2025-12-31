@@ -355,7 +355,12 @@
             // Update measure element to maintain layout space
             function updateMeasureElement(wordElement) {
                 if (!wordElement || !measureElement || !rotatingWordsContainer) return;
+                
+                // Set the text content
                 measureElement.textContent = wordElement.textContent;
+                
+                // Force a reflow to ensure accurate measurements
+                void measureElement.offsetHeight;
                 
                 // Sync the word element's width to match measurement element
                 // This ensures proper line breaks match
@@ -367,8 +372,10 @@
                 }
                 
                 // Update container height to prevent overlap with button
+                // Add a small buffer for multi-line text
                 if (measureHeight > 0) {
-                    rotatingWordsContainer.style.minHeight = measureHeight + 'px';
+                    const buffer = measureHeight > 50 ? 8 : 4; // Extra buffer for multi-line
+                    rotatingWordsContainer.style.minHeight = (measureHeight + buffer) + 'px';
                 }
             }
             
@@ -391,18 +398,26 @@
                 // Add active class after fade out + gap
                 setTimeout(function() {
                     nextWord.classList.add('active');
+                    // Re-measure after word becomes active to ensure accurate height
+                    setTimeout(function() {
+                        updateMeasureElement(nextWord);
+                    }, 50);
                 }, fadeOutDuration + gapDuration);
             }
             
             // Initialize
             const initialWord = rotatingWords[currentIndex];
             if (initialWord) {
-                updateMeasureElement(initialWord);
+                // Set initial word as active
                 initialWord.classList.add('active');
-                // Ensure initial word width is set
+                // Update measurements after a brief delay to ensure proper rendering
                 setTimeout(function() {
                     updateMeasureElement(initialWord);
-                }, 50);
+                    // Double-check after another brief delay for multi-line text
+                    setTimeout(function() {
+                        updateMeasureElement(initialWord);
+                    }, 50);
+                }, 100);
             }
             
             // Handle window resize
