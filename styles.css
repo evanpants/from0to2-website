@@ -331,9 +331,8 @@ a.cta-button.nav-cta:visited,
     color: #e2452f;
     font-weight: 900;
     white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
     word-break: normal;
+    overflow-wrap: normal;
     height: auto;
     min-height: 0;
     overflow: visible;
@@ -354,14 +353,14 @@ a.cta-button.nav-cta:visited,
     color: #e2452f;
     font-weight: 900;
     white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
     word-break: normal;
+    overflow-wrap: normal;
     pointer-events: none;
     z-index: 1;
     max-width: 100%;
     line-height: inherit;
     height: auto;
+    min-width: fit-content;
 }
 
 .rotating-word.active {

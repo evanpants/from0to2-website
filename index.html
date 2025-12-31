@@ -367,8 +367,11 @@
                 const measureWidth = measureElement.offsetWidth;
                 const measureHeight = measureElement.offsetHeight;
                 
+                // Set min-width instead of fixed width to allow natural wrapping
+                // but prevent breaking within words
                 if (measureWidth > 0) {
-                    wordElement.style.width = measureWidth + 'px';
+                    wordElement.style.minWidth = measureWidth + 'px';
+                    wordElement.style.width = 'auto';
                 }
                 
                 // Update container height to prevent overlap with button
