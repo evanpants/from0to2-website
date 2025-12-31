@@ -346,19 +346,39 @@
             const fadeOutDuration = 400; // Match CSS transition duration
             const gapDuration = 300; // 0.3s gap between fade out and fade in
             
-            // Set container height based on active word to prevent layout shift
-            function updateContainerHeight() {
+            // Update container dimensions to prevent layout shift
+            function updateContainerDimensions() {
+                if (!rotatingWordsContainer) return;
+                
                 const activeWord = rotatingWordsContainer.querySelector('.rotating-word.active');
                 if (activeWord) {
-                    // Measure the active word's natural height
+                    // Measure the active word's natural dimensions
                     const height = activeWord.offsetHeight;
+                    const width = activeWord.offsetWidth;
+                    
                     if (height > 0) {
                         rotatingWordsContainer.style.minHeight = height + 'px';
+                    }
+                    if (width > 0) {
+                        rotatingWordsContainer.style.width = width + 'px';
                     }
                 }
             }
             
             function rotateWords() {
+                // Measure and lock current width before transition
+                const currentActiveWord = rotatingWords[currentIndex];
+                if (currentActiveWord && rotatingWordsContainer) {
+                    const currentWidth = currentActiveWord.offsetWidth;
+                    const currentHeight = currentActiveWord.offsetHeight;
+                    if (currentWidth > 0) {
+                        rotatingWordsContainer.style.width = currentWidth + 'px';
+                    }
+                    if (currentHeight > 0) {
+                        rotatingWordsContainer.style.minHeight = currentHeight + 'px';
+                    }
+                }
+                
                 // Remove active class from current word to start fade out
                 rotatingWords[currentIndex].classList.remove('active');
                 
@@ -368,18 +388,20 @@
                 // Add active class to new word after fade out completes + gap
                 setTimeout(function() {
                     rotatingWords[currentIndex].classList.add('active');
-                    // Update container height after transition
-                    setTimeout(updateContainerHeight, 100);
+                    // Update container dimensions after new word becomes active
+                    setTimeout(updateContainerDimensions, 50);
                 }, fadeOutDuration + gapDuration);
             }
             
-            // Initialize container height and start rotation
+            // Initialize and start rotation
             if (rotatingWords.length > 0) {
-                // Initial height update after page load
-                setTimeout(updateContainerHeight, 100);
+                // Initial dimension update after page load
+                setTimeout(updateContainerDimensions, 100);
                 // Update on window resize
+                let resizeTimeout;
                 window.addEventListener('resize', function() {
-                    setTimeout(updateContainerHeight, 50);
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(updateContainerDimensions, 100);
                 });
                 setInterval(rotateWords, rotateDelay);
             }
