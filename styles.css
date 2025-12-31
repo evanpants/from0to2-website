@@ -328,23 +328,10 @@ a.cta-button.nav-cta:visited,
     overflow-wrap: break-word;
 }
 
-.rotating-word-placeholder {
-    visibility: hidden;
-    display: inline-block;
-    color: #e2452f;
-    font-weight: 900;
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    height: auto;
-    line-height: 1.2;
-}
-
 .rotating-word {
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease-in-out, visibility 0s linear 0.4s;
@@ -360,7 +347,7 @@ a.cta-button.nav-cta:visited,
 }
 
 .rotating-word.active {
-    position: absolute;
+    position: relative;
     opacity: 1;
     visibility: visible;
     color: #e2452f;

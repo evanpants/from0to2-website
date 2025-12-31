@@ -45,7 +45,6 @@
                 <h1 class="hero-title">
                     THE FASTEST WAY TO 
                     <span class="rotating-words">
-                        <span class="rotating-word-placeholder">your best friend's birthday party</span>
                         <span class="rotating-word active">Your happy place</span>
                         <span class="rotating-word">school</span>
                         <span class="rotating-word">the supermarket</span>
@@ -341,10 +340,26 @@
         // Rotating words carousel
         (function() {
             const rotatingWords = document.querySelectorAll('.rotating-word');
+            const rotatingWordsContainer = document.querySelector('.rotating-words');
             let currentIndex = 0;
             const rotateDelay = 3000; // 3 seconds per word
             const fadeOutDuration = 400; // Match CSS transition duration
             const gapDuration = 300; // 0.3s gap between fade out and fade in
+            
+            // Set container height based on active word to prevent layout shift
+            function updateContainerHeight() {
+                const activeWord = rotatingWordsContainer.querySelector('.rotating-word.active');
+                if (activeWord) {
+                    // Temporarily make it relative to measure
+                    const wasAbsolute = activeWord.style.position === 'absolute';
+                    activeWord.style.position = 'relative';
+                    const height = activeWord.offsetHeight;
+                    rotatingWordsContainer.style.minHeight = height + 'px';
+                    if (wasAbsolute) {
+                        activeWord.style.position = 'absolute';
+                    }
+                }
+            }
             
             function rotateWords() {
                 // Remove active class from current word to start fade out
@@ -356,11 +371,16 @@
                 // Add active class to new word after fade out completes + gap
                 setTimeout(function() {
                     rotatingWords[currentIndex].classList.add('active');
+                    // Update container height after new word becomes active
+                    setTimeout(updateContainerHeight, 50);
                 }, fadeOutDuration + gapDuration);
             }
             
-            // Start rotation
+            // Initialize container height and start rotation
             if (rotatingWords.length > 0) {
+                updateContainerHeight();
+                // Update on window resize
+                window.addEventListener('resize', updateContainerHeight);
                 setInterval(rotateWords, rotateDelay);
             }
         })();
