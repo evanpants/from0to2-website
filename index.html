@@ -356,6 +356,13 @@
             function updateMeasureElement(wordElement) {
                 if (!wordElement || !measureElement) return;
                 measureElement.textContent = wordElement.textContent;
+                
+                // Sync the word element's width to match measurement element
+                // This ensures proper line breaks match
+                const measureWidth = measureElement.offsetWidth;
+                if (measureWidth > 0) {
+                    wordElement.style.width = measureWidth + 'px';
+                }
             }
             
             function rotateWords() {
@@ -385,6 +392,10 @@
             if (initialWord) {
                 updateMeasureElement(initialWord);
                 initialWord.classList.add('active');
+                // Ensure initial word width is set
+                setTimeout(function() {
+                    updateMeasureElement(initialWord);
+                }, 50);
             }
             
             // Handle window resize

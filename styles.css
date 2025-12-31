@@ -320,6 +320,7 @@ a.cta-button.nav-cta:visited,
     position: relative;
     display: inline-block;
     vertical-align: baseline;
+    max-width: 100%;
 }
 
 .rotating-word-measure {
@@ -330,9 +331,13 @@ a.cta-button.nav-cta:visited,
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    height: 0;
-    overflow: hidden;
+    word-break: normal;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
     pointer-events: none;
+    max-width: 100%;
+    line-height: inherit;
 }
 
 .rotating-word {
@@ -347,9 +352,11 @@ a.cta-button.nav-cta:visited,
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    word-break: normal;
     pointer-events: none;
     z-index: 1;
     max-width: 100%;
+    line-height: inherit;
 }
 
 .rotating-word.active {
