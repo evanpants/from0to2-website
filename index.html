@@ -342,16 +342,19 @@
             const rotatingWords = document.querySelectorAll('.rotating-word');
             let currentIndex = 0;
             const rotateDelay = 3000; // 3 seconds per word
+            const fadeDelay = 200; // 200ms delay for smooth crossfade
             
             function rotateWords() {
-                // Remove active class from current word
+                // Remove active class from current word to start fade out
                 rotatingWords[currentIndex].classList.remove('active');
                 
                 // Move to next word
                 currentIndex = (currentIndex + 1) % rotatingWords.length;
                 
-                // Add active class to new word
-                rotatingWords[currentIndex].classList.add('active');
+                // Add active class to new word after a brief delay for smooth crossfade
+                setTimeout(function() {
+                    rotatingWords[currentIndex].classList.add('active');
+                }, fadeDelay);
             }
             
             // Start rotation
