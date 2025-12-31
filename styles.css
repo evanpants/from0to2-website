@@ -319,13 +319,9 @@ a.cta-button.nav-cta:visited,
 .rotating-words {
     position: relative;
     display: inline-block;
-    min-width: 200px;
-    max-width: 100%;
     text-align: left;
     vertical-align: bottom;
     overflow: visible;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
 }
 
 .rotating-word {
@@ -342,7 +338,6 @@ a.cta-button.nav-cta:visited,
     overflow-wrap: break-word;
     pointer-events: none;
     transform: none;
-    max-width: 100%;
     z-index: 1;
 }
 
@@ -359,6 +354,9 @@ a.cta-button.nav-cta:visited,
     word-wrap: break-word;
     overflow-wrap: break-word;
     z-index: 2;
+    display: inline;
+    width: auto;
+    max-width: none;
 }
 
 .hero-subtitle {

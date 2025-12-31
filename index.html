@@ -350,13 +350,10 @@
             function updateContainerHeight() {
                 const activeWord = rotatingWordsContainer.querySelector('.rotating-word.active');
                 if (activeWord) {
-                    // Temporarily make it relative to measure
-                    const wasAbsolute = activeWord.style.position === 'absolute';
-                    activeWord.style.position = 'relative';
+                    // Measure the active word's natural height
                     const height = activeWord.offsetHeight;
-                    rotatingWordsContainer.style.minHeight = height + 'px';
-                    if (wasAbsolute) {
-                        activeWord.style.position = 'absolute';
+                    if (height > 0) {
+                        rotatingWordsContainer.style.minHeight = height + 'px';
                     }
                 }
             }
@@ -371,16 +368,19 @@
                 // Add active class to new word after fade out completes + gap
                 setTimeout(function() {
                     rotatingWords[currentIndex].classList.add('active');
-                    // Update container height after new word becomes active
-                    setTimeout(updateContainerHeight, 50);
+                    // Update container height after transition
+                    setTimeout(updateContainerHeight, 100);
                 }, fadeOutDuration + gapDuration);
             }
             
             // Initialize container height and start rotation
             if (rotatingWords.length > 0) {
-                updateContainerHeight();
+                // Initial height update after page load
+                setTimeout(updateContainerHeight, 100);
                 // Update on window resize
-                window.addEventListener('resize', updateContainerHeight);
+                window.addEventListener('resize', function() {
+                    setTimeout(updateContainerHeight, 50);
+                });
                 setInterval(rotateWords, rotateDelay);
             }
         })();
