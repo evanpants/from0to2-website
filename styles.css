@@ -1154,6 +1154,62 @@ a.cta-button.nav-cta:visited,
     color: var(--text-lighter);
 }
 
+/* Legal Content Pages */
+.section {
+    padding: 4rem 20px;
+    background: var(--bg-color);
+}
+
+.legal-content {
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.legal-content h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.legal-content h2:first-of-type {
+    margin-top: 0;
+}
+
+.legal-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.legal-content p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.legal-content ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.legal-content li {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+}
+
+.legal-content strong {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
