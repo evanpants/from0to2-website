@@ -1,0 +1,12 @@
+node_modules/
+*.py
+*.sh
+*.gs
+*.md
+*.toml
+*.txt
+*.json
+env_template.txt
+job_scraper_scrapy/
+.git/
+.github/
