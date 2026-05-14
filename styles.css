@@ -1,6 +1,152 @@
 
 
 /* ============================================================
+   Safety Inspection button — Playground Pink (#F295CE)
+   ============================================================ */
+body .navbar .nav-container .nav-right a.cta-button.nav-cta-safety {
+    background-color: #F295CE !important;
+    background: #F295CE !important;
+    color: #06272E !important;
+}
+body .navbar .nav-container .nav-right a.cta-button.nav-cta-safety:hover {
+    background-color: #e87cbd !important;
+    background: #e87cbd !important;
+    color: #06272E !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+body .navbar .nav-container .nav-right a.cta-button.nav-cta-safety:active,
+body .navbar .nav-container .nav-right a.cta-button.nav-cta-safety:focus,
+body .navbar .nav-container .nav-right a.cta-button.nav-cta-safety:visited {
+    background-color: #F295CE !important;
+    background: #F295CE !important;
+    color: #06272E !important;
+}
+
+/* ============================================================
+   Safety Inspection page styles
+   ============================================================ */
+.safety-hero {
+    width: 100%;
+    background: #F9F5EE;
+}
+
+.safety-image-placeholder {
+    width: 100%;
+    height: 420px;
+    background: #e4dfd8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #06272E;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-bottom: 2px solid #d4cfc8;
+}
+
+.safety-content {
+    background: #F9F5EE;
+    padding: 4rem 0 6rem;
+}
+
+.safety-inner {
+    max-width: 760px;
+}
+
+.safety-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #06272E;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.safety-cta-main {
+    display: inline-block;
+    background-color: #F295CE !important;
+    color: #06272E !important;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    margin-bottom: 3.5rem;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.safety-cta-main:hover {
+    background-color: #e87cbd !important;
+    color: #06272E !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.safety-check-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #06272E;
+    margin-bottom: 2rem;
+    letter-spacing: 0.01em;
+}
+
+.safety-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.safety-check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.safety-check-letter {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #F295CE;
+    color: #06272E;
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.02em;
+}
+
+.safety-check-content h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #06272E;
+    margin-bottom: 0.35rem;
+}
+
+.safety-check-content p {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+    .safety-title {
+        font-size: 2.2rem;
+    }
+    .safety-image-placeholder {
+        height: 260px;
+    }
+    .safety-check-item {
+        padding: 1.25rem;
+    }
+}
+
+/* ============================================================
    Sign Up button — red variant (matches Get Started style)
    ============================================================ */
 body .navbar .nav-container .nav-right a.cta-button.nav-cta-signup {
